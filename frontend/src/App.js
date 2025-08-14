@@ -14,6 +14,7 @@ import ScrollToTop from './components/ScrollToTop';
 import NotificationToast from './components/NotificationToast';
 import { NotificationProvider, useNotifications } from './components/NotificationContext';
 import { ConfirmationProvider } from './components/ConfirmationContext';
+import { ThemeProvider } from './contexts/ThemeContext';
 import { apiUtils } from './services/api';
 
 const AppContent = () => {
@@ -280,11 +281,13 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <NotificationProvider>
-      <ConfirmationProvider>
-        <AppContent />
-      </ConfirmationProvider>
-    </NotificationProvider>
+    <ThemeProvider>
+      <NotificationProvider>
+        <ConfirmationProvider>
+          <AppContent />
+        </ConfirmationProvider>
+      </NotificationProvider>
+    </ThemeProvider>
   );
 };
 
