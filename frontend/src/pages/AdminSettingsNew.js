@@ -3,6 +3,7 @@ import { settingsAPI, adminAPI, loopAPI, apiUtils } from '../services/api';
 import { useConfirmation } from '../components/ConfirmationContext';
 import ProfileManagement from '../components/ProfileManagement';
 import LoopList from '../components/LoopList';
+import ThemeToggle from '../components/ThemeToggle';
 
 const UserProfileImage = ({ user, size = 'w-8 h-8' }) => {
   const [profileImage, setProfileImage] = useState(null);
@@ -46,6 +47,7 @@ const AdminSettingsNew = ({ user, addNotification }) => {
   // Tab configuration
   const tabs = [
     { id: 'notifications', name: 'Email Notifications', icon: '📧' },
+    { id: 'appearance', name: 'Appearance', icon: '🎨' },
     { id: 'users', name: 'User Management', icon: '👥' },
     { id: 'activity', name: 'Activity Logs', icon: '📊' },
     { id: 'loops', name: 'All Transaction Loops', icon: '📋' },
@@ -59,6 +61,8 @@ const AdminSettingsNew = ({ user, addNotification }) => {
     switch (activeTab) {
       case 'notifications':
         return <NotificationSettings user={user} addNotification={addNotification} />;
+      case 'appearance':
+        return <AppearanceSettings addNotification={addNotification} />;
       case 'users':
         return <UserManagement addNotification={addNotification} />;
       case 'templates':
