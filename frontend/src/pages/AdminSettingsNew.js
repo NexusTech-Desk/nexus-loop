@@ -2416,7 +2416,7 @@ const APIKeysManagement = ({ addNotification }) => {
         <div className="card-body space-y-6">
           <div className="bg-blue-50 p-4 rounded-lg">
             <div className="flex items-start">
-              <span className="text-2xl mr-3">ℹ️</span>
+              <span className="text-2xl mr-3">���️</span>
               <div>
                 <h4 className="font-medium text-blue-900 mb-2">API Keys for Future Integrations</h4>
                 <p className="text-sm text-blue-700 mb-2">
@@ -2633,6 +2633,58 @@ const AllTransactionLoops = ({ addNotification }) => {
         addNotification={addNotification}
         filters={{}}
       />
+    </div>
+  );
+};
+
+// Appearance Settings Component
+const AppearanceSettings = ({ addNotification }) => {
+  return (
+    <div>
+      <div className="mb-8">
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Appearance Settings</h2>
+        <p className="text-gray-600">
+          Customize the look and feel of your application interface.
+        </p>
+      </div>
+
+      <div className="space-y-6">
+        {/* Theme Settings */}
+        <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Theme Preferences</h3>
+            <p className="text-sm text-gray-600">
+              Choose between light and dark themes to match your preference.
+            </p>
+          </div>
+
+          <ThemeToggle />
+        </div>
+
+        {/* Additional Appearance Options (for future expansion) */}
+        <div className="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Interface Options</h3>
+            <p className="text-sm text-gray-600">
+              Additional appearance customizations will be available here in future updates.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <p className="text-sm text-gray-500">
+                🚧 More customization options coming soon:
+              </p>
+              <ul className="text-sm text-gray-500 mt-2 space-y-1">
+                <li>• Font size preferences</li>
+                <li>• Color scheme variants</li>
+                <li>• Sidebar layout options</li>
+                <li>• Dashboard widget arrangements</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
