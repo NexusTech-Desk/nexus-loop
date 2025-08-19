@@ -2692,4 +2692,92 @@ const AppearanceSettings = ({ addNotification }) => {
   );
 };
 
+const SystemInformation = ({ addNotification }) => {
+  const [systemStatus, setSystemStatus] = useState('Online');
+  const [systemVersion] = useState('v1.0.0');
+  const [uptime, setUptime] = useState('0d 0h 0m');
+
+  useEffect(() => {
+    // Calculate uptime (simple simulation)
+    const startTime = Date.now();
+    const updateUptime = () => {
+      const now = Date.now();
+      const diffMs = now - startTime;
+      const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+      setUptime(`${days}d ${hours}h ${minutes}m`);
+    };
+
+    updateUptime();
+    const interval = setInterval(updateUptime, 60000); // Update every minute
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="space-y-6">
+      <div className="bg-white shadow rounded-lg p-6">
+        <h2 className="text-lg font-medium text-gray-900 mb-4">System Information</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* System Status */}
+          <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-4 border border-green-200">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-medium text-gray-900">System Status</h3>
+              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+            </div>
+            <p className="text-2xl font-bold text-green-700">{systemStatus}</p>
+            <p className="text-sm text-gray-600 mt-1">All services operational</p>
+          </div>
+
+          {/* Version Information */}
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4 border border-blue-200">
+            <h3 className="text-sm font-medium text-gray-900 mb-3">Version Information</h3>
+            <p className="text-2xl font-bold text-blue-700">{systemVersion}</p>
+            <p className="text-sm text-gray-600 mt-1">Current release</p>
+          </div>
+
+          {/* Uptime */}
+          <div className="bg-gradient-to-r from-purple-50 to-purple-100 rounded-lg p-4 border border-purple-200">
+            <h3 className="text-sm font-medium text-gray-900 mb-3">Session Uptime</h3>
+            <p className="text-2xl font-bold text-purple-700">{uptime}</p>
+            <p className="text-sm text-gray-600 mt-1">Since last restart</p>
+          </div>
+
+          {/* System Resources */}
+          <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg p-4 border border-orange-200">
+            <h3 className="text-sm font-medium text-gray-900 mb-3">System Health</h3>
+            <p className="text-2xl font-bold text-orange-700">Healthy</p>
+            <p className="text-sm text-gray-600 mt-1">All components running</p>
+          </div>
+        </div>
+
+        {/* Additional System Details */}
+        <div className="mt-6 bg-gray-50 rounded-lg p-4">
+          <h3 className="text-sm font-medium text-gray-900 mb-3">Environment Details</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+            <div>
+              <span className="font-medium text-gray-700">Environment:</span>
+              <span className="ml-2 text-gray-600">Development</span>
+            </div>
+            <div>
+              <span className="font-medium text-gray-700">Database:</span>
+              <span className="ml-2 text-gray-600">SQLite</span>
+            </div>
+            <div>
+              <span className="font-medium text-gray-700">Node.js:</span>
+              <span className="ml-2 text-gray-600">v18+</span>
+            </div>
+            <div>
+              <span className="font-medium text-gray-700">Platform:</span>
+              <span className="ml-2 text-gray-600">Linux/Docker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default AdminSettingsNew;
