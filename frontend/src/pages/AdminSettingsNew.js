@@ -2781,7 +2781,7 @@ const SystemInformation = ({ addNotification }) => {
             </div>
 
             {/* System Health */}
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-lg p-5">
+            <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-lg p-5" style={{marginBottom: '47px'}}>
               <div className="flex items-center justify-between mb-3">
                 <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
                   <svg className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2808,10 +2808,7 @@ const SystemInformation = ({ addNotification }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Server Information */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 mb-4 flex items-center">
-                <svg className="w-3 h-3 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
-                </svg>
+              <h4 className="text-sm font-semibold text-gray-700 mb-4">
                 Server Configuration
               </h4>
               <div className="space-y-3">
@@ -2832,10 +2829,7 @@ const SystemInformation = ({ addNotification }) => {
 
             {/* Application Stack */}
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 mb-4 flex items-center">
-                <svg className="w-3 h-3 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                </svg>
+              <h4 className="text-sm font-semibold text-gray-700 mb-4">
                 Technology Stack
               </h4>
               <div className="space-y-3">
