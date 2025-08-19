@@ -42,13 +42,13 @@ const UserProfileImage = ({ user, size = 'w-8 h-8' }) => {
 };
 
 const AdminSettingsNew = ({ user, addNotification }) => {
-  const [activeTab, setActiveTab] = useState('notifications');
+  const [activeTab, setActiveTab] = useState('system');
 
   // Tab configuration
   const tabs = [
-    { id: 'notifications', name: 'Email Notifications', icon: '📧' },
-    { id: 'appearance', name: 'Appearance', icon: '🎨' },
     { id: 'system', name: 'System Information', icon: '⚙️' },
+    { id: 'appearance', name: 'Appearance', icon: '🎨' },
+    { id: 'notifications', name: 'Email Notifications', icon: '📧' },
     { id: 'users', name: 'User Management', icon: '👥' },
     { id: 'activity', name: 'Activity Logs', icon: '📊' },
     { id: 'loops', name: 'All Transaction Loops', icon: '📋' },
