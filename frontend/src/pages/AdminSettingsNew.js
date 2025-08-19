@@ -2784,7 +2784,7 @@ const SystemInformation = ({ addNotification }) => {
             <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-lg p-5">
               <div className="flex items-center justify-between mb-3">
                 <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
