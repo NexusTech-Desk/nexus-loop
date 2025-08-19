@@ -2407,9 +2407,10 @@ tr:hover {
 
 .toast-content {
   display: flex;
-  align-items: flex-start;
   gap: 12px;
   padding: 16px;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .toast-icon {
