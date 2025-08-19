@@ -81,7 +81,7 @@ const AdminSettingsNew = ({ user, addNotification }) => {
       case 'loops':
         return <AllTransactionLoops addNotification={addNotification} />;
       default:
-        return <NotificationSettings user={user} addNotification={addNotification} />;
+        return <SystemInformation addNotification={addNotification} />;
     }
   };
 
