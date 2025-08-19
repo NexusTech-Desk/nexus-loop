@@ -48,6 +48,7 @@ const AdminSettingsNew = ({ user, addNotification }) => {
   const tabs = [
     { id: 'notifications', name: 'Email Notifications', icon: '📧' },
     { id: 'appearance', name: 'Appearance', icon: '🎨' },
+    { id: 'system', name: 'System Information', icon: '⚙️' },
     { id: 'users', name: 'User Management', icon: '👥' },
     { id: 'activity', name: 'Activity Logs', icon: '📊' },
     { id: 'loops', name: 'All Transaction Loops', icon: '📋' },
