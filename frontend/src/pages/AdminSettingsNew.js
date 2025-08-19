@@ -2676,10 +2676,10 @@ const AppearanceSettings = ({ addNotification }) => {
                 🚧 More customization options coming soon:
               </p>
               <ul className="text-sm text-gray-500 mt-2 space-y-1">
-                <li>• Font size preferences</li>
-                <li>• Color scheme variants</li>
-                <li>• Sidebar layout options</li>
-                <li>• Dashboard widget arrangements</li>
+                <li>Font size preferences</li>
+                <li>Color scheme variants</li>
+                <li>Sidebar layout options</li>
+                <li>Dashboard widget arrangements</li>
               </ul>
             </div>
           </div>
