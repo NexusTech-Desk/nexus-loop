@@ -101,7 +101,14 @@ const AdminSettingsNew = ({ user, addNotification }) => {
           <h3 className="text-lg font-bold text-slate-800 mb-1">Settings Categories</h3>
           <p className="text-sm text-slate-600">Choose a section to configure</p>
         </div>
-        <div className="bg-white rounded-xl p-3 shadow-sm border border-slate-200" style={{maxHeight: '400px', overflowY: 'auto'}}>
+        <div className="bg-white rounded-xl p-3 shadow-sm border border-slate-200" style={{
+          maxHeight: '400px',
+          overflowY: 'auto',
+          '@media (max-width: 640px)': {
+            paddingRight: '7px',
+            margin: '0 -5px 27px 0'
+          }
+        }}>
           <nav className="flex flex-wrap gap-2">
             {tabs.map((tab) => (
               <button
