@@ -3477,3 +3477,11 @@ tr:hover {
     align-self: flex-start;
   }
 }
+
+/* Settings Navigation Container Mobile Responsiveness */
+@media (max-width: 640px) {
+  .settings-nav-container {
+    padding-right: 7px !important;
+    margin: 0 -5px 27px 0 !important;
+  }
+}
