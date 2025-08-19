@@ -2717,6 +2717,33 @@ tr:hover {
   to { opacity: 1; }
 }
 
+/* Toast Animations */
+@keyframes toastFadeIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes toastFadeOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 /* Mobile responsive for confirmation modal */
 @media (max-width: 480px) {
   .confirmation-content {
