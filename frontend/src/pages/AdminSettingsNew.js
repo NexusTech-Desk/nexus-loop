@@ -64,6 +64,8 @@ const AdminSettingsNew = ({ user, addNotification }) => {
         return <NotificationSettings user={user} addNotification={addNotification} />;
       case 'appearance':
         return <AppearanceSettings addNotification={addNotification} />;
+      case 'system':
+        return <SystemInformation addNotification={addNotification} />;
       case 'users':
         return <UserManagement addNotification={addNotification} />;
       case 'templates':
