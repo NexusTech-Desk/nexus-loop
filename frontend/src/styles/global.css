@@ -2382,22 +2382,27 @@ tr:hover {
   width: 100%;
   max-width: 400px;
   min-width: 280px;
-  transform: scale(0.8) translateY(-20px);
+  transform: translateY(20px);
   opacity: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   backdrop-filter: blur(10px);
   position: relative;
 }
 
 .toast-visible {
-  transform: scale(1) translateY(0);
+  transform: translateY(0);
   opacity: 1;
+  visibility: visible;
+  animation: toastFadeIn 0.5s ease-out;
 }
 
 .toast-exiting {
-  transform: scale(0.9) translateY(-10px);
+  transform: translateY(20px);
   opacity: 0;
+  visibility: hidden;
+  animation: toastFadeOut 0.5s ease-out;
 }
 
 .toast-content {
