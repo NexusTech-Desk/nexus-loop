@@ -2463,6 +2463,10 @@ tr:hover {
   height: 3px;
   background-color: #f3f4f6;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .toast-progress-bar {
