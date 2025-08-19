@@ -183,31 +183,8 @@ const Sidebar = ({ user, onLogout, collapsed, onToggle, isMobile, onNavigate }) 
 
 
 
-      {/* System Info and Logout */}
-      <div className="system-info-section border-t border-gray-200 mt-auto" style={{padding: '2px 20px 84px 20px'}}>
-        {(!collapsed || isMobile) && (
-          <>
-            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wide text-center" style={{margin: '10px 0 24px'}}>System</div>
-            <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-lg p-3 border border-green-200 mb-4">
-              <div className="flex flex-col gap-3 text-xs mb-2">
-                <div className="flex flex-row">
-                  <span className="text-gray-600 font-medium">Status</span>
-                  <span className="text-green-700 font-bold status-online" style={{marginLeft: '165px'}}>Online</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                </div>
-              </div>
-              <div className="flex items-start flex-col gap-3 justify-between text-xs">
-                <div className="flex flex-row">
-                  <span className="text-gray-600 font-medium">Version</span>
-                  <span className="text-gray-800 font-bold version-number" style={{marginLeft: '160px'}}>v1.0.0</span>
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-
+      {/* Logout */}
+      <div className="logout-section border-t border-gray-200 mt-auto" style={{padding: '20px 20px 84px 20px'}}>
         {/* Sign Out Button */}
         <button
           onClick={onLogout}
