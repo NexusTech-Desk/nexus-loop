@@ -2858,33 +2858,45 @@ const SystemInformation = ({ addNotification }) => {
           <p className="text-sm text-gray-500">Real-time system performance indicators</p>
         </div>
         <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
+          <div className="flex flex-col">
+            <div className="flex flex-col justify-center items-start">
+              <div className="flex items-center justify-center mb-6"></div>
+              <div className="flex flex-col">
+                <div className="flex gap-5 md:gap-5 md:flex-row flex-col">
+                  <div className="flex flex-col line-height-normal w-full md:w-1/2">
+                    <p className="text-sm text-gray-500">Uptime</p>
+                  </div>
+                  <div className="flex flex-col line-height-normal w-full md:w-1/2 md:ml-5">
+                    <p className="text-2xl font-bold text-gray-900 md:mx-auto">99.9%</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">99.9%</p>
-              <p className="text-sm text-gray-500">Uptime</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
+            <div className="flex flex-col justify-center items-start">
+              <div className="flex items-center justify-center mb-6"></div>
+              <div>
+                <div className="flex gap-5 md:gap-5 md:flex-row flex-col">
+                  <div className="flex flex-col line-height-normal w-full md:w-1/2">
+                    <p className="text-sm text-gray-500">Response Time</p>
+                  </div>
+                  <div className="flex flex-col line-height-normal w-full md:w-1/2 md:ml-5">
+                    <p className="text-2xl font-bold text-gray-900">&lt;50ms</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">&lt;50ms</p>
-              <p className="text-sm text-gray-500">Response Time</p>
             </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
+            <div className="flex flex-col justify-center items-start pb-18">
+              <div className="flex items-center justify-center mb-6"></div>
+              <div>
+                <div className="flex gap-5 md:gap-5 md:flex-row flex-col">
+                  <div className="flex flex-col line-height-normal w-full md:w-1/2">
+                    <p className="text-sm text-gray-500">Memory Usage</p>
+                  </div>
+                  <div className="flex flex-col line-height-normal w-full md:w-1/2 md:ml-5">
+                    <p className="text-2xl font-bold text-gray-900">Stable</p>
+                  </div>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-gray-900">Stable</p>
-              <p className="text-sm text-gray-500">Memory Usage</p>
             </div>
           </div>
         </div>
