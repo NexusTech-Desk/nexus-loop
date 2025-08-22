@@ -504,11 +504,20 @@ const UserManagement = ({ addNotification }) => {
   const openPasswordModal = (user) => {
     setPasswordModal({ show: true, user });
     setPasswordData({ newPassword: '', confirmPassword: '' });
+    setPasswordVisibility({ newPassword: false, confirmPassword: false });
   };
 
   const closePasswordModal = () => {
     setPasswordModal({ show: false, user: null });
     setPasswordData({ newPassword: '', confirmPassword: '' });
+    setPasswordVisibility({ newPassword: false, confirmPassword: false });
+  };
+
+  const togglePasswordVisibility = (field) => {
+    setPasswordVisibility(prev => ({
+      ...prev,
+      [field]: !prev[field]
+    }));
   };
 
   const openProfileModal = (user) => {
@@ -825,7 +834,7 @@ const UserManagement = ({ addNotification }) => {
                 onClick={openCsvImportModal}
                 className="btn btn-primary flex items-center gap-2"
               >
-                <span>📥</span>
+                <span>����</span>
                 Import Users
               </button>
             </div>
