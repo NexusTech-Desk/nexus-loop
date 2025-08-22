@@ -1568,23 +1568,41 @@ const PasswordManagement = ({ user, addNotification }) => {
       <div className="card-body space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">New Password</label>
-          <input
-            type="password"
-            value={passwordData.newPassword}
-            onChange={(e) => handleInputChange('newPassword', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-            placeholder="Enter new password"
-          />
+          <div className="relative">
+            <input
+              type={passwordVisibility.newPassword ? "text" : "password"}
+              value={passwordData.newPassword}
+              onChange={(e) => handleInputChange('newPassword', e.target.value)}
+              className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md"
+              placeholder="Enter new password"
+            />
+            <button
+              type="button"
+              onClick={() => togglePasswordVisibility('newPassword')}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+            >
+              {passwordVisibility.newPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
-          <input
-            type="password"
-            value={passwordData.confirmPassword}
-            onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-            placeholder="Confirm new password"
-          />
+          <div className="relative">
+            <input
+              type={passwordVisibility.confirmPassword ? "text" : "password"}
+              value={passwordData.confirmPassword}
+              onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+              className="w-full px-3 py-2 pr-10 border border-gray-300 rounded-md"
+              placeholder="Confirm new password"
+            />
+            <button
+              type="button"
+              onClick={() => togglePasswordVisibility('confirmPassword')}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5"
+            >
+              {passwordVisibility.confirmPassword ? '🙈' : '👁️'}
+            </button>
+          </div>
         </div>
         <div className="bg-yellow-50 p-3 rounded-lg">
           <p className="text-sm text-yellow-800">
