@@ -183,5 +183,10 @@ module.exports = {
       WHERE name LIKE ? OR email LIKE ?
       ORDER BY last_active DESC NULLS LAST, name ASC
     `).all(`%${searchTerm}%`, `%${searchTerm}%`);
+  },
+
+  deleteUser: (id) => {
+    const stmt = db.prepare('DELETE FROM users WHERE id = ?');
+    return stmt.run(id);
   }
 };
