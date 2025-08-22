@@ -462,6 +462,7 @@ const UserManagement = ({ addNotification }) => {
   const [loading, setLoading] = useState(true);
   const [passwordModal, setPasswordModal] = useState({ show: false, user: null });
   const [passwordData, setPasswordData] = useState({ newPassword: '', confirmPassword: '' });
+  const [passwordVisibility, setPasswordVisibility] = useState({ newPassword: false, confirmPassword: false });
   const [changingPassword, setChangingPassword] = useState(false);
   const [profileModal, setProfileModal] = useState({ show: false, user: null });
   const [suspendingUsers, setSuspendingUsers] = useState(new Set());
