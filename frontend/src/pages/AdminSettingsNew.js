@@ -1550,6 +1550,7 @@ const PasswordManagement = ({ user, addNotification }) => {
       if (response.data.success) {
         addNotification('Password changed successfully', 'success');
         setPasswordData({ newPassword: '', confirmPassword: '' });
+        setPasswordVisibility({ newPassword: false, confirmPassword: false });
       }
     } catch (error) {
       const errorMessage = apiUtils.getErrorMessage(error);
