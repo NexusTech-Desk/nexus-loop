@@ -1445,7 +1445,7 @@ const ActivityLogs = ({ addNotification }) => {
               📤 Export Logs (CSV)
             </button>
             <button onClick={clearLogs} className="btn btn-danger" style={{marginLeft: '50px'}}>
-              ���️ Clear Logs
+              🗑️ Clear Logs
             </button>
           </div>
         </div>
@@ -1520,6 +1520,13 @@ const PasswordManagement = ({ user, addNotification }) => {
     setPasswordData(prev => ({
       ...prev,
       [key]: value
+    }));
+  };
+
+  const togglePasswordVisibility = (field) => {
+    setPasswordVisibility(prev => ({
+      ...prev,
+      [field]: !prev[field]
     }));
   };
 
