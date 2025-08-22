@@ -19,9 +19,9 @@ const authController = {
       // Find user by email
       const user = userModel.findByEmail(email);
       if (!user) {
-        return res.status(401).json({ 
-          success: false, 
-          error: 'Invalid credentials' 
+        return res.status(404).json({
+          success: false,
+          error: 'This user does not exist'
         });
       }
 
