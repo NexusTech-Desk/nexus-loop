@@ -1445,7 +1445,7 @@ const ActivityLogs = ({ addNotification }) => {
               📤 Export Logs (CSV)
             </button>
             <button onClick={clearLogs} className="btn btn-danger" style={{marginLeft: '50px'}}>
-              🗑️ Clear Logs
+              ���️ Clear Logs
             </button>
           </div>
         </div>
@@ -1513,6 +1513,7 @@ const PasswordManagement = ({ user, addNotification }) => {
     newPassword: '',
     confirmPassword: ''
   });
+  const [passwordVisibility, setPasswordVisibility] = useState({ newPassword: false, confirmPassword: false });
   const [loading, setLoading] = useState(false);
 
   const handleInputChange = (key, value) => {
