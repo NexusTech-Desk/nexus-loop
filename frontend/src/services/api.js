@@ -40,6 +40,11 @@ api.interceptors.response.use(
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
+    } else if (error.response?.status === 403 && error.response?.data?.suspended) {
+      // User account suspended
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
