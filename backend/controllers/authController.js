@@ -25,12 +25,21 @@ const authController = {
         });
       }
 
+      // Check if user is suspended
+      if (user.suspended) {
+        return res.status(403).json({
+          success: false,
+          error: 'Account suspended. Please contact an administrator.',
+          suspended: true
+        });
+      }
+
       // Check password
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        return res.status(401).json({ 
-          success: false, 
-          error: 'Invalid credentials' 
+        return res.status(401).json({
+          success: false,
+          error: 'Invalid credentials'
         });
       }
 
