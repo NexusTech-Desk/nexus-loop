@@ -944,6 +944,25 @@ const UserManagement = ({ addNotification }) => {
                               </button>
                             )
                           )}
+
+                          {user.role !== 'admin' && (
+                            <button
+                              onClick={() => deleteUser(user)}
+                              disabled={deletingUsers.has(user.id)}
+                              className="btn btn-sm btn-danger"
+                              title={`Delete ${user.name}`}
+                              style={{backgroundColor: '#dc3545', borderColor: '#dc3545'}}
+                            >
+                              {deletingUsers.has(user.id) ? (
+                                <>
+                                  <div className="spinner"></div>
+                                  Deleting...
+                                </>
+                              ) : (
+                                '🗑️ Delete'
+                              )}
+                            </button>
+                          )}
                         </div>
                       </td>
                     </tr>
