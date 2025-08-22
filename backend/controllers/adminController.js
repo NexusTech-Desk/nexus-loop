@@ -15,6 +15,7 @@ const adminController = {
           name: user.name,
           email: user.email,
           role: user.role,
+          suspended: user.suspended,
           created_at: user.created_at,
           updated_at: user.updated_at
         }))
