@@ -637,6 +637,36 @@ const UserManagement = ({ addNotification }) => {
     });
   };
 
+  const deleteUser = async (user) => {
+    const confirmed = await confirmAction({
+      title: 'Delete User',
+      message: `Are you sure you want to permanently delete ${user.name}? This action cannot be undone and will remove all their data from the system.`,
+      confirmText: 'Delete User',
+      cancelText: 'Cancel',
+      type: 'danger',
+      icon: '🗑️',
+      onConfirm: async () => {
+        setDeletingUsers(prev => new Set([...prev, user.id]));
+        try {
+          const response = await adminAPI.deleteUser(user.id);
+          if (response.data.success) {
+            addNotification(response.data.message, 'success');
+            fetchUsers(); // Refresh the user list
+          }
+        } catch (error) {
+          const errorMessage = apiUtils.getErrorMessage(error);
+          addNotification(errorMessage, 'error');
+        } finally {
+          setDeletingUsers(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(user.id);
+            return newSet;
+          });
+        }
+      }
+    });
+  };
+
   const openCsvImportModal = () => {
     setCsvImportModal(true);
     setCsvFile(null);
