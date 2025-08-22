@@ -114,6 +114,9 @@ export const adminAPI = {
   suspendUser: (userId) => api.put(`/admin/users/${userId}/suspend`),
   unsuspendUser: (userId) => api.put(`/admin/users/${userId}/unsuspend`),
 
+  // User Deletion
+  deleteUser: (userId) => api.delete(`/admin/users/${userId}`),
+
   // Role Management
   promoteToAdmin: (userId) => api.put(`/admin/users/${userId}/promote`),
 
