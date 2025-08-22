@@ -465,6 +465,7 @@ const UserManagement = ({ addNotification }) => {
   const [changingPassword, setChangingPassword] = useState(false);
   const [profileModal, setProfileModal] = useState({ show: false, user: null });
   const [suspendingUsers, setSuspendingUsers] = useState(new Set());
+  const [deletingUsers, setDeletingUsers] = useState(new Set());
   const [csvImportModal, setCsvImportModal] = useState(false);
   const [csvFile, setCsvFile] = useState(null);
   const [csvPreview, setCsvPreview] = useState([]);
