@@ -38,6 +38,9 @@ router.put('/change-password', adminController.changeUserPassword);
 router.put('/users/:userId/suspend', adminController.suspendUser);
 router.put('/users/:userId/unsuspend', adminController.unsuspendUser);
 
+// User Deletion
+router.delete('/users/:userId', adminController.deleteUser);
+
 // Role Management
 router.put('/users/:userId/promote', adminController.promoteToAdmin);
 

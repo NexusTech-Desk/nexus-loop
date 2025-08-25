@@ -40,6 +40,11 @@ api.interceptors.response.use(
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';
+    } else if (error.response?.status === 403 && error.response?.data?.suspended) {
+      // User account suspended
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
@@ -113,6 +118,9 @@ export const adminAPI = {
   // User Suspension
   suspendUser: (userId) => api.put(`/admin/users/${userId}/suspend`),
   unsuspendUser: (userId) => api.put(`/admin/users/${userId}/unsuspend`),
+
+  // User Deletion
+  deleteUser: (userId) => api.delete(`/admin/users/${userId}`),
 
   // Role Management
   promoteToAdmin: (userId) => api.put(`/admin/users/${userId}/promote`),

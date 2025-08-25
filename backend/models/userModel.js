@@ -183,5 +183,27 @@ module.exports = {
       WHERE name LIKE ? OR email LIKE ?
       ORDER BY last_active DESC NULLS LAST, name ASC
     `).all(`%${searchTerm}%`, `%${searchTerm}%`);
+  },
+
+  deleteUser: (id) => {
+    // Use a transaction to ensure data integrity
+    const deleteTransaction = db.transaction(() => {
+      // First, delete activity logs associated with this user
+      db.prepare('DELETE FROM activity_logs WHERE user_id = ?').run(id);
+
+      // Set creator_id to NULL for loops created by this user
+      // This preserves the loops but removes the creator reference
+      db.prepare('UPDATE loops SET creator_id = NULL WHERE creator_id = ?').run(id);
+
+      // Set created_by to NULL for document templates created by this user
+      // This preserves the templates but removes the creator reference
+      db.prepare('UPDATE document_templates SET created_by = NULL WHERE created_by = ?').run(id);
+
+      // Finally, delete the user
+      const result = db.prepare('DELETE FROM users WHERE id = ?').run(id);
+      return result;
+    });
+
+    return deleteTransaction();
   }
 };

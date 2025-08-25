@@ -2382,8 +2382,9 @@ tr:hover {
   width: 100%;
   max-width: 400px;
   min-width: 280px;
-  transform: scale(0.8) translateY(-20px);
+  transform: translateX(100%);
   opacity: 0;
+  visibility: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
   backdrop-filter: blur(10px);
@@ -2391,20 +2392,25 @@ tr:hover {
 }
 
 .toast-visible {
-  transform: scale(1) translateY(0);
+  transform: translateX(0);
   opacity: 1;
+  visibility: visible;
+  animation: toastSlideIn 0.4s ease-out;
 }
 
 .toast-exiting {
-  transform: scale(0.9) translateY(-10px);
+  transform: translateX(100%);
   opacity: 0;
+  visibility: hidden;
+  animation: toastSlideOut 0.4s ease-out;
 }
 
 .toast-content {
   display: flex;
-  align-items: flex-start;
   gap: 12px;
   padding: 16px;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .toast-icon {
@@ -2457,6 +2463,10 @@ tr:hover {
   height: 3px;
   background-color: #f3f4f6;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .toast-progress-bar {
@@ -2710,6 +2720,33 @@ tr:hover {
 @keyframes confirmationOverlayFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Toast Animations */
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 /* Mobile responsive for confirmation modal */
@@ -3475,5 +3512,13 @@ tr:hover {
   .role-column,
   .status-column {
     align-self: flex-start;
+  }
+}
+
+/* Settings Navigation Container Mobile Responsiveness */
+@media (max-width: 640px) {
+  .settings-nav-container {
+    padding-right: 7px !important;
+    margin: 0 -5px 27px 0 !important;
   }
 }

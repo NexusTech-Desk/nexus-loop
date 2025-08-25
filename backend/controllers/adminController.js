@@ -15,6 +15,7 @@ const adminController = {
           name: user.name,
           email: user.email,
           role: user.role,
+          suspended: user.suspended,
           created_at: user.created_at,
           updated_at: user.updated_at
         }))
@@ -234,6 +235,63 @@ const adminController = {
       res.json({
         success: true,
         message: `User ${targetUser.name} has been unsuspended`
+      });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  deleteUser: async (req, res, next) => {
+    try {
+      const { userId } = req.params;
+
+      // Get target user
+      const targetUser = userModel.findById(userId);
+      if (!targetUser) {
+        return res.status(404).json({
+          success: false,
+          error: 'User not found'
+        });
+      }
+
+      // Prevent deletion of admin users
+      if (targetUser.role === 'admin') {
+        return res.status(403).json({
+          success: false,
+          error: 'Cannot delete admin users'
+        });
+      }
+
+      // Prevent self-deletion
+      if (parseInt(userId) === req.user.id) {
+        return res.status(403).json({
+          success: false,
+          error: 'Cannot delete your own account'
+        });
+      }
+
+      // Delete the user
+      const result = userModel.deleteUser(userId);
+
+      if (result.changes === 0) {
+        return res.status(404).json({
+          success: false,
+          error: 'Failed to delete user'
+        });
+      }
+
+      // Log deletion activity
+      ActivityLogger.log(
+        req.user.id,
+        'USER_DELETED',
+        `Deleted user: ${targetUser.name} (${targetUser.email})`,
+        req,
+        { targetUserId: parseInt(userId), targetUserName: targetUser.name, targetUserEmail: targetUser.email }
+      );
+
+      res.json({
+        success: true,
+        message: `User ${targetUser.name} has been permanently deleted`
       });
     } catch (error) {
       next(error);
