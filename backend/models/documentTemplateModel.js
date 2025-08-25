@@ -22,6 +22,48 @@ db.prepare(`
 
 console.log('Document templates table initialized');
 
+// Migration: Update created_by column to allow NULL values
+try {
+  // Check if we need to recreate the table to allow NULL in created_by
+  const tableInfo = db.prepare("PRAGMA table_info(document_templates)").all();
+  const createdByColumn = tableInfo.find(column => column.name === 'created_by');
+
+  if (createdByColumn && createdByColumn.notnull === 1) {
+    console.log('Updating document_templates table to allow NULL created_by...');
+
+    // SQLite doesn't support ALTER COLUMN, so we need to recreate the table
+    db.exec(`
+      CREATE TABLE document_templates_new (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        description TEXT,
+        category TEXT NOT NULL,
+        file_path TEXT NOT NULL,
+        file_name TEXT NOT NULL,
+        file_type TEXT NOT NULL,
+        file_size INTEGER NOT NULL,
+        fields_mapped BOOLEAN DEFAULT 0,
+        field_mappings TEXT,
+        created_by INTEGER,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (created_by) REFERENCES users (id)
+      );
+
+      INSERT INTO document_templates_new
+      SELECT * FROM document_templates;
+
+      DROP TABLE document_templates;
+
+      ALTER TABLE document_templates_new RENAME TO document_templates;
+    `);
+
+    console.log('Document templates table updated successfully');
+  }
+} catch (error) {
+  console.error('Error updating document_templates table:', error);
+}
+
 module.exports = {
   // Create a new document template
   create: (templateData) => {
